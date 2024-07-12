@@ -6,6 +6,7 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 const userRoutes = require('./routes/userRoutes')
 const config = require('config');
+const cookieParser = require('cookie-parser');
 
 const app = express();
 
@@ -25,6 +26,7 @@ app.use(cors({
     credentials: true,
 }));
 app.use(bodyParser.json());
+app.use(cookieParser());
 
 app.get('/', (req, res) => {
     res.status(200).send('Hi, Here We Are.....');
