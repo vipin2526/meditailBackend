@@ -23,12 +23,12 @@ const login = async (req, res) => {
         const user = await User.findOne({ username });
         if (user && bcrypt.compareSync(password, user.password)) {
             const token = jwt.sign({ username }, config.get('secretKey'), { expiresIn: '10d' });
-            res.cookie('token', token, {
-                maxAge: 1000 * 60 * 60 * 24 * 10, // would expire after (for 15 minutes  1000 * 60 * 15 ) 15 minutes
-                httpOnly: true, // The cookie only accessible by the web server
-                sameSite: 'none',
-                secure: true, // Marks the cookie to be used with HTTPS only.
-            });
+            // res.cookie('token', token, {
+            //     maxAge: 1000 * 60 * 60 * 24 * 10, // would expire after (for 15 minutes  1000 * 60 * 15 ) 15 minutes
+            //     httpOnly: true, // The cookie only accessible by the web server
+            //     sameSite: 'none',
+            //     secure: true, // Marks the cookie to be used with HTTPS only.
+            // });
             res.status(200).send({ token });
         } else {
             res.status(401).send({ message: 'Invalid credentials' });
