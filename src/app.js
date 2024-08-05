@@ -21,7 +21,7 @@ mongoose.connect(config.get('mongoURI'), {
 
 
 app.use(cors({
-    origin: 'http://localhost:3000',
+    origin: 'https://meditail.vercel.app',
     methods: 'GET,POST,PUT,DELETE',
     credentials: true,
 }));
